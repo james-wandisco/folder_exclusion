@@ -3,12 +3,12 @@ Shows how to exclude multiple specific folders from a LDM migration.
 
 Example: Exclude 700 out of 1700.
 
-My source has directory /warehouse/tablespaceexternal/hive/database_1700_tables.db/
+My source has directory /warehouse/tablespace/external/hive/database_1700_tables.db/
 
 This directory contains 1700 folders. I want to replicate only 1000 of these folders.
 
 ### Compile a list of excluded folders.
-This is a simple **example** of folders named folder1001 to folder1700
+This is a simple **example** of folders named table1001 to table1700
 
 You would have to compile the list with accurate names of the table folders you need to exclude.
 
@@ -53,7 +53,7 @@ curl -X 'POST' 'http://10.6.123.132:18080/migrations/fulldatabase/start'
 
 My target should not have folders 1001-1700, only 1-1000
 ```
-hdfs dfs -ls /warehouse/tablespaceexternal/hive/database_1700_tables.db/
+hdfs dfs -ls /warehouse/tablespace/external/hive/database_1700_tables.db/
 ```
 
 
