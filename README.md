@@ -22,11 +22,15 @@ Add an exclusion template for all folders in the folders_list.txt file.
 ```
 while read -r i; do curl -X 'PUT' "http://10.6.123.132:18080/exclusions/regex/db_fulldatabase_exlusion_table$i?description=Excludefolder_table$i&patternType=JAVA_PCRE&regex=$i"; done < folder_list.txt
 ```
-#### Or, (more risk of human error) Add an exclusion including regex for all unwanted folders.
+<span style="color:red">
+#### Alternatively, (more risk of human error) Add an exclusion including regex for all unwanted folders.
+</span>
+
 ```
 regex=""; while read -r i; do regex=$i%20%7C%20$regex; done < folder_list.txt; echo $regex
 curl -X 'PUT' "http://10.6.123.132:18080/exclusions/regex/db_fulldatabase_exlusion_full?description=Excludefolder_table$i&patternType=JAVA_PCRE&regex=$regex"
 ```
+
 ### LDM rule. 
 The rule can be created to include the full database folder.
 Add the rule but don't autostart or start.
