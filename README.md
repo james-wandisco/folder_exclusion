@@ -14,7 +14,7 @@ You would have to compile the list with accurate names of the table folders you 
 
 Example file for testing...
 ```
-for i in {1001..1700}; do echo folder$i >> folder_list.txt; done
+for i in {1001..1700}; do echo table$i >> folder_list.txt; done
 ```
 
 ### Add individual exclusion template for each unwanted folder.
