@@ -21,14 +21,14 @@ for i in {1001..1700}; do echo table$i >> folder_list.txt; done
 ![](https://github.com/james-wandisco/folder_exclusion/blob/main/ezgif-5-eab58faebb.gif)
 Add an exclusion template for all folders in the folders_list.txt file.
 ```
-while read -r i; do curl -X 'PUT' "http://10.6.123.132:18080/exclusions/regex/db_fulldatabase_exlusion_table$i?description=Excludefolder_table$i&patternType=JAVA_PCRE&regex=$i"; done < folder_list.txt
+while read -r i; do curl -X 'PUT' "http://10.6.123.132:18080/exclusions/regex/db_fulldatabase_exclusion_table$i?description=Excludefolder_table$i&patternType=JAVA_PCRE&regex=$i"; done < folder_list.txt
 ```
 
 #### Alternatively, (more risk of human error) Add a single exclusion with regex for ALL unwanted folders.
 
 ```
 regex=""; while read -r i; do regex=$i%20%7C%20$regex; done < folder_list.txt; echo $regex
-curl -X 'PUT' "http://10.6.123.132:18080/exclusions/regex/db_fulldatabase_exlusion_full?description=Excludefolder_table$i&patternType=JAVA_PCRE&regex=$regex"
+curl -X 'PUT' "http://10.6.123.132:18080/exclusions/regex/db_fulldatabase_exclusion_full?description=Excludefolder_table$i&patternType=JAVA_PCRE&regex=$regex"
 ```
 
 
@@ -42,7 +42,7 @@ curl -X 'PUT' 'http://10.6.123.132:18080/migrations/fulldatabase?path=/warehouse
 ### Add exclusions to this rule.
 Exclusions have been created but need to be added to the rule.
 ```
-while read -r i; do curl -X 'PUT' "http://10.6.123.132:18080/migrations/fulldatabase/exclusions/db_fulldatabase_exlusion_table$i"; done < folder_list.txt
+while read -r i; do curl -X 'PUT' "http://10.6.123.132:18080/migrations/fulldatabase/exclusions/db_fulldatabase_exclusion_table$i"; done < folder_list.txt
 ```
 
 ### Start the migration.
@@ -76,14 +76,14 @@ curl -s -X 'GET' "http://10.6.123.132:18080/migrations/fulldatabase" | grep rege
 ```
 Remove exclusions from a rule.
 ```
-curl -X 'DELETE' "http://10.6.123.132:18080/migrations/fulldatabase/exclusions/db_fulldatabase_exlusion_table1001"
+curl -X 'DELETE' "http://10.6.123.132:18080/migrations/fulldatabase/exclusions/db_fulldatabase_exclusion_table1001"
 ```
 ```
-while read -r i; do curl -X 'DELETE' "http://10.6.123.132:18080/migrations/fulldatabase/exclusions/db_fulldatabase_exlusion_table$i"; done < folder_list.txt
+while read -r i; do curl -X 'DELETE' "http://10.6.123.132:18080/migrations/fulldatabase/exclusions/db_fulldatabase_exclusion_table$i"; done < folder_list.txt
 ```
 Remove exclusion templates.
 ```
-while read -r i; do curl -X 'DELETE' "http://10.6.123.132:18080/exclusions/db_fulldatabase_exlusion_table$i"; done < folder_list.txt
+while read -r i; do curl -X 'DELETE' "http://10.6.123.132:18080/exclusions/db_fulldatabase_exclusion_table$i"; done < folder_list.txt
 ```
 Stop migration.
 ```
@@ -98,11 +98,11 @@ curl -X 'DELETE' 'http://10.6.123.132:18080/migrations/fulldatabase'
 ### Reset my test.
 Remove exclusions from my rule.
 ```
-while read -r i; do curl -X 'DELETE' "http://10.6.123.132:18080/migrations/fulldatabase/exclusions/db_fulldatabase_exlusion_table$i"; done < folder_list.txt;
+while read -r i; do curl -X 'DELETE' "http://10.6.123.132:18080/migrations/fulldatabase/exclusions/db_fulldatabase_exclusion_table$i"; done < folder_list.txt;
 ```
 Remove exclusion templates
 ```
-while read -r i; do curl -X 'DELETE' "http://10.6.123.132:18080/exclusions/db_fulldatabase_exlusion_table$i"; done < folder_list.txt
+while read -r i; do curl -X 'DELETE' "http://10.6.123.132:18080/exclusions/db_fulldatabase_exclusion_table$i"; done < folder_list.txt
 ```
 Stop migration
 ```
