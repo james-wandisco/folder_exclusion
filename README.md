@@ -1,23 +1,32 @@
 # folder_exclusion
-Shows how to exclude multiple specific folders from a LDM migration. Example: Exclude 700 out of 1700
+Shows how to exclude multiple specific folders from a LDM migration. 
+
+Example: Exclude 700 out of 1700.
+
 My source has directory /warehouse/tablespaceexternal/hive/database_1700_tables.db/
-This directory contains 1700 folders.
-I want to replicate only 1000 of these folders.
+
+This directory contains 1700 folders. I want to replicate only 1000 of these folders.
 
 ### Compile a list of excluded folders.
 This is a simple **example** of folders named folder1001 to folder1700
+
 You would have to compile the list with accurate names of the table folders you need to exclude.
 
+Example file for testing...
 ```
 for i in {1001..1700}; do echo folder$i >> folder_list.txt; done
 ```
 
-### Add exclusion templates.
+### Add individual exclusion template for each unwanted folder.
 Add an exclusion template for all folders in the folders_list.txt file.
 ```
 while read -r i; do curl -X 'PUT' "http://10.6.123.132:18080/exclusions/regex/db_fulldatabase_exlusion_table$i?description=Excludefolder_table$i&patternType=JAVA_PCRE&regex=$i"; done < folder_list.txt
 ```
-
+#### Or, (more risk of human error) Add an exclusion including regex for all unwanted folders.
+```
+regex=""; while read -r i; do regex=$i%20%7C%20$regex; done < folder_list.txt; echo $regex
+curl -X 'PUT' "http://10.6.123.132:18080/exclusions/regex/db_fulldatabase_exlusion_full?description=Excludefolder_table$i&patternType=JAVA_PCRE&regex=$regex"
+```
 ### LDM rule. 
 The rule can be created to include the full database folder.
 Add the rule but don't autostart or start.
@@ -79,6 +88,26 @@ Remove migration.
 curl -X 'DELETE' 'http://10.6.123.132:18080/migrations/fulldatabase' 
 
 ```
+
+### Reset my test.
+Remove exclusions from my rule.
+```
+curl -X 'DELETE' "http://10.6.123.132:18080/migrations/fulldatabase/exclusions/db_fulldatabase_exlusion_table1001"
+```
+Remove exclusion templates
+```
+while read -r i; do curl -X 'DELETE' "http://10.6.123.132:18080/exclusions/db_fulldatabase_exlusion_table$i"; done < folder_list.txt
+```
+Stop migration
+```
+curl -X 'POST' 'http://10.6.123.132:18080/migrations/fulldatabase/stop'
+```
+Delete migration
+```
+curl -X 'DELETE' 'http://10.6.123.132:18080/migrations/fulldatabase' 
+```
+
+
 
 
 
