@@ -32,7 +32,6 @@ curl -X 'PUT' "http://10.6.123.132:18080/exclusions/regex/db_fulldatabase_exlusi
 ```
 
 
-
 ### LDM rule. 
 The rule can be created to include the full database folder.
 Add the rule but don't autostart or start.
