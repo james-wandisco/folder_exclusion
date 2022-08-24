@@ -92,7 +92,7 @@ curl -X 'DELETE' 'http://10.6.123.132:18080/migrations/fulldatabase'
 ### Reset my test.
 Remove exclusions from my rule.
 ```
-curl -X 'DELETE' "http://10.6.123.132:18080/migrations/fulldatabase/exclusions/db_fulldatabase_exlusion_table1001"
+while read -r i;curl -X 'DELETE' "http://10.6.123.132:18080/migrations/fulldatabase/exclusions/db_fulldatabase_exlusion_table$i"; done < folder_list.txt;
 ```
 Remove exclusion templates
 ```
