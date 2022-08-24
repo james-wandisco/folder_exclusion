@@ -18,6 +18,7 @@ for i in {1001..1700}; do echo table$i >> folder_list.txt; done
 ```
 
 ### Add individual exclusion template for each unwanted folder.
+![](https://github.com/james-wandisco/folder_exclusion/blob/main/ezgif-5-eab58faebb.gif)
 Add an exclusion template for all folders in the folders_list.txt file.
 ```
 while read -r i; do curl -X 'PUT' "http://10.6.123.132:18080/exclusions/regex/db_fulldatabase_exlusion_table$i?description=Excludefolder_table$i&patternType=JAVA_PCRE&regex=$i"; done < folder_list.txt
