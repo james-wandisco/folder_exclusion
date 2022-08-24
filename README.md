@@ -56,7 +56,7 @@ My target should not have folders 1001-1700, only 1-1000
 hdfs dfs -ls /warehouse/tablespace/external/hive/database_1700_tables.db/
 ```
 
-![]()
+![](https://github.com/james-wandisco/folder_exclusion/blob/main/screen.gif)
 
 ### Extras
 Check exclusion template list.
