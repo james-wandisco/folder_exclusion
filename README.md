@@ -112,6 +112,10 @@ Delete migration
 curl -X 'DELETE' 'http://10.6.123.132:18080/migrations/fulldatabase' 
 ```
 
+delete target data
+```
+hdfs dfs -rm -r /warehouse/tablespace/external/hive/database_1700_tables.db
+```
 
 
 
