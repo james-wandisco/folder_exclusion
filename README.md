@@ -71,7 +71,7 @@ Add a single exclusion template. Name=exclusiontester, Description=JustATest, Ty
 ```
 curl -X 'PUT' "http://10.6.123.132:18080/exclusions/regex/exclusiontester?description=JustATest&patternType=JAVA_PCRE&regex=SecretFolder1"
 ```
-Remove a single exclusion template with Name=
+Remove a single exclusion template with Name=exclusiontester
 ```
 curl -X 'DELETE' "http://10.6.123.132:18080/exclusions/exclusiontester"
 ```
