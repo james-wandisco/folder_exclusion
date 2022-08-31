@@ -36,7 +36,7 @@ curl -X 'PUT' "http://10.6.123.132:18080/exclusions/regex/db_fulldatabase_exclus
 The rule can be created to include the full database folder.
 Add the rule but don't autostart or start.
 ```
-curl -X 'PUT' 'http://10.6.123.132:18080/migrations/fulldatabase?path=/warehouse/tablespace/external/hive/database_1700_tables.db&source=SourceHDFS&target=Traget_HDFS&actionPolicy=com.wandisco.livemigrator2.migration.OverwriteActionPolicy&autoStart=false'
+curl -X 'PUT' 'http://10.6.123.132:18080/migrations/fulldatabase?path=/warehouse/tablespace/external/hive/database_1700_tables.db&source=SourceHDFS&target=TragetHDFS&actionPolicy=com.wandisco.livemigrator2.migration.OverwriteActionPolicy&autoStart=false'
 ```
 
 ### Add exclusions to this rule.
