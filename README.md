@@ -81,7 +81,7 @@ curl -s -X 'GET' "http://10.6.123.132:18080/migrations/fulldatabase"
 ```
 curl -s -X 'GET' "http://10.6.123.132:18080/migrations/fulldatabase" | grep regex | awk '{print $3}' | sed 's/^"\([^"]*\).*/\1/' | sort
 ```
-Add a single exclusion template to a rule. 
+Add a single exclusion template to a rule called fulldatabase. 
 ```
 curl -X 'PUT' "http://10.6.123.132:18080/migrations/fulldatabase/exclusions/exclusiontester"
 ```
