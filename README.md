@@ -62,10 +62,18 @@ hdfs dfs -ls /warehouse/tablespace/external/hive/database_1700_tables.db/
 Check exclusion template list.
 ```
 curl -X 'GET' 'http://10.6.123.132:18080/exclusions/userDefined'
+```
 
 ```
-```
 curl -X 'GET' 'http://10.6.123.132:18080/exclusions/userDefined' | grep regex | sort
+```
+Add a single exclusion template. Name=exclusiontester, Description=JustATest, Type=JAVA Perl Compatible RegEx, Regex Pattern=SecretFolder1
+```
+curl -X 'PUT' "http://10.6.123.132:18080/exclusions/regex/exclusiontester?description=JustATest&patternType=JAVA_PCRE&regex=SecretFolder1"
+```
+Remove a single exclusion template with Name=
+```
+curl -X 'DELETE' "http://10.6.123.132:18080/exclusions/exclusiontester"
 ```
 Check exclusions applied to a rule.
 ```
