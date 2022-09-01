@@ -36,6 +36,9 @@ curl -X 'PUT' "http://10.6.123.132:18080/exclusions/regex/example_exclusion?desc
 
 :notes: **If you are using mobile browser**: Be very careful here!
 
+My important paragraph.
+{: .alert .alert-info}
+
 ### 4. Create the migration rule for path = /example
 ```
 curl -X 'PUT' 'http://10.6.123.132:18080/migrations/example?path=/example&source=SourceHDFS&target=TragetHDFS&actionPolicy=com.wandisco.livemigrator2.migration.OverwriteActionPolicy&autoStart=false'
