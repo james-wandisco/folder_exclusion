@@ -18,34 +18,38 @@ Do these examples in a test directory or lab until fully accurate.
 We will exclude '/example/neededfolder1/folder/dontneed' but keep 'dontneed1' and 'dontneedthis'
 We want the match only on the absolute folder.
 
-### 2. Add a single exclusion for a folder you don’t want.
+### 2. Confirm the correct regex.
 
-Get the correct regex, you can use https://regex101.com/.
+Get the correct regex, you can use https://regex101.com/. Or any other regex tester tool.
 
 ![img_1.png](img_1.png)
+
 
 For the curl command we can change the '/' characters to URL encoded character
 
 See https://www.w3schools.com/tags/ref_urlencode.ASP for a list of all URL encoded characters.
 
+### 3. Add the exclusion template with url encoded characters. 
 ```
 curl -X 'PUT' "http://10.6.123.132:18080/exclusions/regex/example_exclusion?description=example_exclusion&patternType=JAVA_PCRE&regex=example%2Fneededfolder1%2Ffolder%2Fdontneed"
 ```
 
-### 3. Create the migration rule for path = /example
+:warning: **If you are using mobile browser**: Be very careful here!
+
+### 4. Create the migration rule for path = /example
 ```
 curl -X 'PUT' 'http://10.6.123.132:18080/migrations/example?path=/example&source=SourceHDFS&target=TragetHDFS&actionPolicy=com.wandisco.livemigrator2.migration.OverwriteActionPolicy&autoStart=false'
 ```
-### 4. Add your exclusions to the migration rule = example
+### 5. Add your exclusions to the migration rule = example
 ```
 curl -X 'PUT' "http://10.6.123.132:18080/migrations/example/exclusions/example_exclusion"
 ```
-### 5. Run the migration.
+### 6. Run the migration.
 ```
 curl -X 'POST' 'http://10.6.123.132:18080/migrations/example/start'
 ```
 
-### 6. Check the target.
+### 7. Check the target.
 ```
 hdfs dfs -ls -R /example
 ```
