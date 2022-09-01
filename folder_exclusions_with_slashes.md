@@ -34,7 +34,7 @@ See https://www.w3schools.com/tags/ref_urlencode.ASP for a list of all URL encod
 curl -X 'PUT' "http://10.6.123.132:18080/exclusions/regex/example_exclusion?description=example_exclusion&patternType=JAVA_PCRE&regex=example%2Fneededfolder1%2Ffolder%2Fdontneed"
 ```
 
-:warning: **If you are using mobile browser**: Be very careful here!
+:alert: **If you are using mobile browser**: Be very careful here!
 
 ### 4. Create the migration rule for path = /example
 ```
