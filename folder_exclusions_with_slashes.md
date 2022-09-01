@@ -34,10 +34,9 @@ See https://www.w3schools.com/tags/ref_urlencode.ASP for a list of all URL encod
 curl -X 'PUT' "http://10.6.123.132:18080/exclusions/regex/example_exclusion?description=example_exclusion&patternType=JAVA_PCRE&regex=example%2Fneededfolder1%2Ffolder%2Fdontneed"
 ```
 
-:notes: **If you are using mobile browser**: Be very careful here!
+:question:
+**Note:** You can do the same for 700 exclusions with the while loop and text file containing all patterns with '%2F' replacing the '/' characters.
 
-My important paragraph.
-{: .alert .alert-info}
 
 ### 4. Create the migration rule for path = /example
 ```
