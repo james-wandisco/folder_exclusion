@@ -36,7 +36,8 @@ curl -X 'PUT' "http://10.6.123.132:18080/exclusions/regex/example_exclusion?desc
 
 
 :question:
-    ***Note: You can do the same for 700 exclusions with the while loop and text file containing all patterns with '%2F' replacing the '/' characters.***
+*Note: You can repeat this for 700 exclusions with the while loop shown in the previous example [here](https://github.com/james-wandisco/folder_exclusion/blob/main/README.md) and text file containing all patterns with '%2F' replacing the '/' characters.*
+
 
 
 ### 4. Create the migration rule for path = /example
